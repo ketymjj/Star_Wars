@@ -1,0 +1,24 @@
+<div class="sw-card" [style.animation-delay]="index * 60 + 'ms'">
+  <div class="card-header">
+    <span class="card-icon">{{ icon }}</span>
+    <h3 class="card-title">{{ title }}</h3>
+    <div class="card-corner top-right"></div>
+  </div>
+
+  <div class="card-body">
+    @for (field of fields; track field.label) {
+      <div class="field">
+        <span class="field-label">{{ field.label }}</span>
+        <span class="field-value">{{ field.value || '—' }}</span>
+      </div>
+    }
+  </div>
+
+  <div class="card-footer">
+    <button class="detail-btn" (click)="viewDetail.emit()">
+      <span>VER DETALHES</span>
+      <span class="arrow">›</span>
+    </button>
+    <div class="card-corner bottom-left"></div>
+  </div>
+</div>

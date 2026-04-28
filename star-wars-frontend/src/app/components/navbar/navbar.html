@@ -1,0 +1,24 @@
+<nav class="navbar">
+  <div class="nav-inner container">
+    <a class="brand" routerLink="/home" (click)="closeMenu()">
+      <span class="brand-icon">⚔</span>
+      <span class="brand-text">STAR WARS</span>
+    </a>
+
+    <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" [class.open]="menuOpen">
+      @for (link of navLinks; track link.path) {
+        <li>
+          <a [routerLink]="link.path" routerLinkActive="active" (click)="closeMenu()">
+            <span class="link-icon">{{ link.icon }}</span>
+            <span>{{ link.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+  <div class="nav-line"></div>
+</nav>

@@ -1,0 +1,24 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.swp
+*.DS_Store
+appsettings.Development.json
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Environment
+.env
+.env.*

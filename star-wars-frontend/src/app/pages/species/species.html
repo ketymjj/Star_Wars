@@ -1,0 +1,58 @@
+<div class="page-wrapper">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title"><span class="icon">👾</span> ESPÉCIES</h1>
+      <p class="page-subtitle">{{ total }} espécies na galáxia</p>
+    </div>
+
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input
+        class="search-input"
+        type="text"
+        placeholder="BUSCAR ESPÉCIE..."
+        #searchInput
+        [value]="search"
+        (input)="search = searchInput.value" />
+      @if (search) {
+        <button class="search-clear" (click)="search = ''; searchInput.value = ''">✕</button>
+      }
+    </div>
+
+    @if (loading) {
+      <div class="spinner-wrap">
+        <div class="spinner"></div>
+        <p>CARREGANDO DADOS...</p>
+      </div>
+    } @else if (filteredItems.length === 0) {
+      <div class="search-empty">
+        NENHUM RESULTADO ENCONTRADO
+        <p>Tente outro termo de busca</p>
+      </div>
+    } @else {
+      <div class="cards-grid">
+        @for (item of filteredItems; track item.url; let i = $index) {
+          <app-card
+            [title]="item.name"
+            icon="👾"
+            [fields]="getFields(item)"
+            [index]="i"
+            (viewDetail)="openModal(item)" />
+        }
+      </div>
+
+      <div class="pagination">
+        <button (click)="prev()" [disabled]="page === 1">‹ ANTERIOR</button>
+        <span class="page-info">Página <span>{{ page }}</span> de <span>{{ totalPages }}</span></span>
+        <button (click)="next()" [disabled]="page === totalPages">PRÓXIMA ›</button>
+      </div>
+    }
+  </div>
+</div>
+
+<app-detail-modal
+  [title]="selected?.name || ''"
+  icon="👾"
+  [fields]="modalFields"
+  [visible]="modalVisible"
+  (close)="modalVisible = false" />

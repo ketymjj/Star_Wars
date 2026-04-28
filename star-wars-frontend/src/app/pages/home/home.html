@@ -1,0 +1,46 @@
+<div class="page-wrapper home-page">
+  <div class="hero">
+    <div class="hero-content container">
+      <div class="crawl-badge">UMA LONGA JORNADA</div>
+      <h1 class="hero-title">
+        <span class="title-star">STAR</span>
+        <span class="title-wars">WARS</span>
+        <span class="title-sub">GALAXY EXPLORER</span>
+      </h1>
+      <p class="hero-desc">
+        Explore o universo de Star Wars. Personagens, planetas, naves,
+        veículos, filmes e espécies — tudo a um clique de distância.
+      </p>
+      <a routerLink="/people" class="hero-cta">
+        EXPLORAR GALÁXIA
+        <span class="cta-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="hero-decoration">
+      <div class="orbit orbit-1"></div>
+      <div class="orbit orbit-2"></div>
+      <div class="planet"></div>
+    </div>
+  </div>
+
+  <div class="sections container">
+    <div class="section-grid">
+      @for (section of sections; track section.path; let i = $index) {
+        <a [routerLink]="section.path" class="section-card" [style.animation-delay]="i * 80 + 'ms'">
+          <div class="sc-icon">{{ section.icon }}</div>
+          <div class="sc-content">
+            <h3>{{ section.label }}</h3>
+            <p>{{ section.desc }}</p>
+          </div>
+          <span class="sc-arrow">›</span>
+        </a>
+      }
+    </div>
+  </div>
+
+  <footer class="home-footer">
+    <p>Dados fornecidos por <span>SWAPI - The Star Wars API</span></p>
+    <p class="force">Que a Força esteja com você</p>
+  </footer>
+</div>

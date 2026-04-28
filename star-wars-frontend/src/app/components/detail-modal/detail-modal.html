@@ -1,0 +1,34 @@
+@if (visible) {
+  <div class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">{{ icon }}</span>
+          <h2 class="modal-title">{{ title }}</h2>
+        </div>
+        <button class="close-btn" (click)="close.emit()" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-divider">
+        <span class="divider-line"></span>
+        <span class="divider-dot"></span>
+        <span class="divider-line"></span>
+      </div>
+
+      <div class="modal-body">
+        <div class="fields-grid">
+          @for (field of fields; track field.label) {
+            <div class="field-item" [class.full]="field.full">
+              <span class="field-label">{{ field.label }}</span>
+              <span class="field-value">{{ field.value || '—' }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="close-action-btn" (click)="close.emit()">FECHAR</button>
+      </div>
+    </div>
+  </div>
+}
